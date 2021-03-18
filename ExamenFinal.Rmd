@@ -1,0 +1,124 @@
+---
+title: "Tarea 05"
+author: "Alejandro Zúñiga Pérez"
+date: "26/2/2021"
+knit: (function(inputFile, encoding){
+      out_dir <-'./';
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_file=file.path(dirname(inputFile), out_dir, './ExamenFinal.html')) })
+output: html_document
+---
+
+
+```{r setup, include=FALSE, engine.path='/usr/bin/python3'}
+
+knitr::opts_chunk$set(echo = TRUE, highlight = TRUE)
+
+knitr::knit_engines$set(python=reticulate::eng_python)
+library(reticulate)
+```
+
+```{r input_p, echo=FALSE}
+library(knitr)
+code=readLines('./solucion.py')
+read_chunk(lines=code)
+
+
+```
+
+# Solución del examen
+
+Se presenta la solución del examen final sobre análisis de datos
+y visualización de gráficos sobre covid 19. 
+se enlistan algunas de las funciones que permitirán desarrollar uno 
+a uno los procedimientos sugeridos en el enunciado. Se presenta un código fuente 
+que permite la lectura y modificación de un archivo csv. Se modifica a través de 
+la extracción de países en filas y columnas con las fechas para todos los países.
+
+El siguiente es el código mencionado.
+```{python Item1}
+```
+
+
+Ahora se muestra el archivo reducido para proceder con la solución del examen.
+
+```{python Item2}
+```
+
+Se procede con la solución del examen.
+```{python Item3}
+```
+## Procedimiento 1
+
+Se tiene primeramente una función que recoge los países asignados previamente 
+en el enunciado. Se retorna este dataframe modificado y se imprime en pantalla.
+
+```{python Item4}
+```
+
+Seguidamente, se procede a transponer el dataframe y retornarlo y se imprime en
+pantalla para mostrar funcionalidad.
+
+```{python Item5}
+```
+
+## Procedimiento 2
+
+Se utiliza la exploración de clusterización correspondiente al agrupamiento
+de tres conjuntos de datos.
+Se presenta la función que arroja estos resultados consistiendo esencialmente
+en tres gráficas de barras que refieren a cada agrupación respectiva.
+```{python Item6}
+```
+Lo que se concluye de este análisis es que el cluster hecho a partir de kmedias 
+toma tres promedios aleatorios que definen la proporción relativa que en este caso 
+se trata de poblaciones o conjuntos de datos correspondiente a casos confirmados.
+Es un hecho que la población de México se podrá ver mucho mayor que la del resto
+de centroamérica por la mayoría de población de dicho país.
+
+Ahora bien, se podría tener un resultado rival con respecto a Canadá y es que tal vez 
+se podría tener poblaciones relativas para determinar una estandarización mayor
+que relacione de mejor forma los clusters de datos.
+## Procedimiento 3
+
+Ahora se procede a modificar de una forma adicional el dataframe en cuestión.
+Se añaden columnas respectivas al mes y al año para representar los casos 
+confirmados por mes y año de forma enumerada. 
+
+La siguiente función determina los tres centros correspondientes a cada uno 
+de los clusters. La función que se define a continuación pretende agregar la columna
+de mes y año y calcula los valores medios por mes y año.
+```{python Item7}
+```
+
+Con el dataframe modificado se pretende ahora clusterizar nuevamente para volver 
+a apreciar los resultados finales. 
+
+```{python Item8}
+```
+
+Dentro de este análisis se evalúa que igualmente, la proporción de poblaciones con
+casos confirmados pretende ser mayor en los países con mayor población, siendo 
+esta una apreciación poco contundente de los clusteres realizados. De esta manera
+se puede adjuntar más épocas de ajuste para el método de clusterización y quizá de esta
+forma se pueda representar ya no en términos de poblaciones relativas, sino 
+analizar relaciones en términos de los clusteres evaluados.
+
+## Procedimiento 4
+En esta última sección se grafica a través de cuadro de calor y box plot los 
+resultados obtenidos. Se crean dos funciones correspondientes a graficar cada uno
+de estos elementos.
+```{python Item9}
+```
+
+```{python Item10}
+```
+
+Se tiene una similitud en los resultados obtenidos dentro de este 
+mapa de calor y el método de K medias por la predominancia de México sobre los casos
+con otros países. De esta manera, en primer lugar México junto con una presencia de Canadá,
+esto correspondiente a los países con mayor población de la lista de países mencionados.
+
+Finalmente, del gráfico de cajas y bigotes se aprecia de igual manera una distribución
+mayor para México y Canadá, y por supuesto los demás países resultaron con una menor distribución, tal y como lo mostró el método de K medias.
